@@ -33,10 +33,12 @@ class MNIST(nn.Module):
         x = inputs.cpu() >= torch.randn(inputs.size())
 
         x = self.conv1(x.float().cuda())
+        x = self.bn1(x)
         x = self.lif1(x)
         x = self.pool1(x)
 
         x = self.conv2(x)
+        x = self.bn2(x)
         x = self.lif2(x)
         x = self.pool2(x)
 
